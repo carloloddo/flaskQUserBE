@@ -14,7 +14,7 @@ app = Flask(__name__)
 # del db sqlite. Questo deve essere cambiato, in seguito, col db postgress.
 
 db = SQLAlchemy(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../../site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../site.db'
 
 # Per poter attuare delle modifiche aldb in corso d'opera,
 # istanzio anche la classe Migrate
