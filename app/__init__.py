@@ -5,9 +5,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restplus import Api
 import traceback
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+cors = CORS(app)
 # Dopo aver creato un'istanza della classe Flask
 # creo un wrapper dell'ORM SQLALchemy.
 # Definisco poi una variabile d'ambiente che contiene, per ora, l'url relativo
