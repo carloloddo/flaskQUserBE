@@ -68,14 +68,17 @@ class General_users_requests(Resource):
     def post(self):
         '''create a new user'''
         #create a new record in the DB
-        data = request.get_json()
-        name_request = data.get("name")
-        email_request = data.get("email")
-        password_request = data.get('password')
-        u = User(name=name_request, email=email_request, password=password_request)
-        db.session.add(u)
-        db.session.commit()
-        return jsonify(u.asDict())
+        try:
+            data = request.get_json()
+            name_request = data.get("name")
+            email_request = data.get("email")
+            password_request = data.get('password')
+            u = User(name=name_request, email=email_request, password=password_request)
+            db.session.add(u)
+            db.session.commit()
+            return jsonify(u.asDict())
+        except Exception as e:
+            return jsonify({'message':str(e)})
 
 # In questo endpoint è richiesto l'id nell'url.
 # Nella forma: es. ../api/v1.0/users/1
